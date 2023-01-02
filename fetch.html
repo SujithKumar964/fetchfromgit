@@ -26,40 +26,38 @@
     </style>
 </head>
 <body>
-    <div id="demo"></div>
-    <div id="sal"></div>
-    <div id="dec"></div>
+    <div id="total"></div>
+    <div id="above50k"></div>
+    <div id="joindec"></div>
     <script>
-        fetch('https://rawcdn.githack.com/kmitprojectschool/sem12022/788c820e40a750fecb30433c8d346457b7859abc/employee.json')
-            .then( (res)=> res.json())
-            .then((data)=>{
+        fetch('https://rawcdn.githack.com/kmitprojectschool/sem12022/788c820e40a750fecb30433c8d346457b7859abc/employee.json').then( (res)=> res.json()).then((data)=>{
                 const info=data.Employees;
                 console.log(info);
-                let dob;
-                t=`The employees whose Salary > 50K are:`
-                p="The Employees who joined in month of december are:"
-                text="<table>"
-                text+="<tr><th>Name</th><th>Address</th><th>Salary</th><th>Date of Joining</th></tr>"
+                let doj;
+                ab=`The employees whose Salary>50K are:`
+                dec="The Employees who joined in month of december are:"
+                sta="<table>"
+                sta+="<tr><th>Name</th><th>Address</th><th>Salary</th><th>Date of Joining</th></tr>"
                 for (i of info) {
-                    dob=(i.DateOfJoining).split("-")
-                    text+="<tr>"
-                    text+=`<td>${i.Name}</td>
+                    doj=(i.DateOfJoining).split("-")
+                    sta+="<tr>"
+                    sta+=`<td>${i.Name}</td>
                             <td>${i.Address}</td>
                             <td>${i.Salary}</td>
                             <td>${i.DateOfJoining}</td>`
-                    text+="</tr>"
+                    sta+="</tr>"
                     if(i.Salary > 50000){
-                        t+=`<p>${i.Name}</p>`
+                        ab+=`<p>${i.Name}</p>`
                     }
-                    if(dob[1]==12){
-                        p+=`<p>${i.Name}</p>`
+                    if(doj[1]==12){
+                        dec+=`<p>${i.Name}</p>`
                     }
                     
                 }
-                text+='</table>' 
-                document.getElementById('demo').innerHTML = text;
-                document.getElementById('sal').innerHTML= t;
-                document.getElementById('dec').innerHTML= p;
+                sta+='</table>' 
+                document.getElementById('total').innerHTML = sta;
+                document.getElementById('above50k').innerHTML=ab;
+                document.getElementById('joindec').innerHTML= dec;
             })
     </script>
 </body>
